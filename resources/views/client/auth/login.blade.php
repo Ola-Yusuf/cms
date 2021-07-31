@@ -40,7 +40,7 @@
           <div class="card-body p-6">
             <div class="mb-4">
               <a href="{{route('index')}}"><img src="{{asset('assets/images/brand/logo/cms.png')}}" class="mb-2" alt=""></a>
-              <p class="mb-6">Accountant::Login</p>
+              <p class="mb-6">Client :: Login</p>
               <p class="mb-6">Please enter your user information</p>
             </div>
             <!-- Form -->
