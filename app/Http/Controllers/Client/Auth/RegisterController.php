@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/client';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -51,9 +51,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:clients'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'fname' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:accountants'],
+            'tel' => ['required', 'string', 'unique:accountants'],
+            // 'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -67,21 +69,23 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return Client::create([
-            'name' => $data['name'],
+            'fname' => $data['fname'],
+            'username' => $data['username'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'tel' => $data['tel'],
+            'password' => Hash::make('CMS-Client'),
         ]);
     }
 
-    /**
-     * Show the application registration form.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showRegistrationForm()
-    {
-        return view('client.auth.register');
-    }
+    // /**
+    //  * Show the application registration form.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function showRegistrationForm()
+    // {
+    //     return view('client.auth.register');
+    // }
 
     /**
      * Get the guard to be used during registration.

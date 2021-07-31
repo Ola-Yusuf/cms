@@ -3,7 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 // Dashboard
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'PageController@index')->name('home');
+Route::get('/profile', 'PageController@profile')->name('profile');
+Route::get('/project/view', 'PageController@viewProject')->name('view.projects');
+Route::get('/invoice/view', 'PageController@viewInvoice')->name('view.invoices');
+Route::get('/payment/view', 'PageController@viewPayment')->name('view.payments');
 
 // Login
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

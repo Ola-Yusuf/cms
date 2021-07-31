@@ -15,8 +15,10 @@ class CreateAccountantsTable extends Migration
     {
         Schema::create('accountants', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('fname');
+            $table->string('username');
             $table->string('email')->unique();
+            $table->string('tel')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
