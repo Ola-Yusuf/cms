@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Session;
 
 class RegisterController extends Controller
 {
@@ -38,7 +39,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('client.guest:client');
+        $this->middleware('admin.guest:admin');
     }
 
     /**
@@ -68,13 +69,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return Client::create([
+        $client = Client::create([
             'fname' => $data['fname'],
             'username' => $data['username'],
             'email' => $data['email'],
             'tel' => $data['tel'],
             'password' => Hash::make('CMS-Client'),
         ]);
+
+        $message['type'] = 'success';
+        $message['content'] = 'Client Created Successfully';
+        Session::flash('message', $message);
+
+        return $client;
     }
 
     // /**

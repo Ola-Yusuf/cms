@@ -15,7 +15,7 @@
                     <!-- Tab content -->
                     <div class="tab-content p-4" id="pills-tabContent-basic-forms">
                       <div class="tab-pane tab-example-design fade show active" id="pills-basic-forms-design" role="tabpanel" aria-labelledby="pills-basic-forms-design-tab">
-                        <form method="POST" action="{{ route('accountant.register') }}">
+                        <form method="POST" action="{{ route('admin.register.accountant') }}">
                           @csrf
                           <!-- Input -->
                           <div class="mb-3">

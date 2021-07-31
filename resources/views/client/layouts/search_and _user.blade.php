@@ -26,7 +26,7 @@
 
 
             <div class="lh-1 ">
-              <h5 class="mb-1"> {{ !Auth::guard('client')->guest() ? Auth::guard('client')->user()->name : '' }}</h5>
+              <h5 class="mb-1"> {{ !Auth::guard('client')->guest() ? Auth::guard('client')->user()->fname : '' }}</h5>
               <a href="{{route('client.profile')}}" class="text-inherit fs-6">View my profile</a>
             </div>
             <div class=" dropdown-divider mt-3 mb-2"></div>

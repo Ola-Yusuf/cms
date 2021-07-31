@@ -22,14 +22,14 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    // use RegistersUsers;
 
     /**
      * Where to redirect accountants after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    // protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -38,7 +38,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('accountant.guest:accountant');
+        $this->middleware('admin.guest:admin');
     }
 
     /**
@@ -68,13 +68,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return Accountant::create([
+        $accountant = Accountant::create([
             'fname' => $data['fname'],
             'username' => $data['username'],
             'email' => $data['email'],
             'tel' => $data['tel'],
             'password' => Hash::make('CMS-Accountant'),
         ]);
+
+        return $accountant;
+    }
+
+    public function register(Request $request)
+    {
+        dd('here');
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        Session::flash('status','A New School Has Been Added Successfully. <br> 
+                                Email Notification Has Been Sent To The Associated Address.'); 
+
+        return redirect()->route('admin.dashboard');
     }
 
     // /**
@@ -87,13 +102,13 @@ class RegisterController extends Controller
     //     return view('accountant.auth.register');
     // }
 
-    /**
-     * Get the guard to be used during registration.
-     *
-     * @return \Illuminate\Contracts\Auth\StatefulGuard
-     */
-    protected function guard()
-    {
-        return Auth::guard('accountant');
-    }
+    // /**
+    //  * Get the guard to be used during registration.
+    //  *
+    //  * @return \Illuminate\Contracts\Auth\StatefulGuard
+    //  */
+    // protected function guard()
+    // {
+    //     return Auth::guard('accountant');
+    // }
 }
