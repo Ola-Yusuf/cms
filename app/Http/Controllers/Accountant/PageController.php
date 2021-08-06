@@ -31,7 +31,7 @@ class PageController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function profile() {
-        return view('client.profile');
+        return view('accountant.profile');
     }
 
     /**
@@ -40,7 +40,7 @@ class PageController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function viewClient() {
-        return view('client.view_client');
+        return view('accountant.view_client');
     }
 
     /**
@@ -49,7 +49,7 @@ class PageController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function viewProject() {
-        return view('client.view_project');
+        return view('accountant.view_project');
     }
 
      /**
@@ -58,7 +58,7 @@ class PageController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function viewInvoice() {
-        return view('client.view_invoice');
+        return view('accountant.view_invoice');
     }
 
     /**
@@ -67,6 +67,6 @@ class PageController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function viewPayment() {
-        return view('client.view_payment');
+        return view('accountant.view_payment');
     }
 }

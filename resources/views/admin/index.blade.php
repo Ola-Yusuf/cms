@@ -42,7 +42,7 @@
             </div>
             <div class="icon-shape icon-md bg-light-primary text-primary
               rounded-1">
-              <i class="bi bi-briefcase fs-4"></i>
+              <i class="bi bi-stack fs-4"></i>
             </div>
           </div>
           <!-- project number -->
@@ -68,7 +68,7 @@
             </div>
             <div class="icon-shape icon-md bg-light-primary text-primary
               rounded-1">
-              <i class="bi bi-list-task fs-4"></i>
+              <i class="bi bi-people fs-4"></i>
             </div>
           </div>
           <!-- project number -->
@@ -93,7 +93,7 @@
             </div>
             <div class="icon-shape icon-md bg-light-primary text-primary
               rounded-1">
-              <i class="bi bi-people fs-4"></i>
+              <i class="bi bi-newspaper fs-4"></i>
             </div>
           </div>
           <!-- project number -->

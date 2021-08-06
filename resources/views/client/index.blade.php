@@ -18,6 +18,9 @@
           <div>
             <a href="{{route('client.view.invoices')}}" class="btn btn-white">View Invoice</a>
           </div>
+          <div>
+            <a href="{{route('client.view.invoices')}}" class="btn btn-white">View Receipt</a>
+          </div>
         </div>
       </div>
     </div>
@@ -34,7 +37,7 @@
             </div>
             <div class="icon-shape icon-md bg-light-primary text-primary
               rounded-1">
-              <i class="bi bi-briefcase fs-4"></i>
+              <i class="bi bi-layers fs-4"></i>
             </div>
           </div>
           <!-- project number -->
@@ -60,7 +63,7 @@
             </div>
             <div class="icon-shape icon-md bg-light-primary text-primary
               rounded-1">
-              <i class="bi bi-people fs-4"></i>
+              <i class="bi bi-newspaper fs-4"></i>
             </div>
           </div>
           <!-- project number -->
@@ -86,13 +89,38 @@
             </div>
             <div class="icon-shape icon-md bg-light-primary text-primary
               rounded-1">
-              <i class="bi bi-currency-dollar fs-4"></i>
+              <i class="bi bi-receipt fs-4"></i>
             </div>
           </div>
           <!-- project number -->
           <div>
             <h1 class="fw-bold">76</h1>
             {{-- <p class="mb-0"><span class="text-success me-2">5%</span>Completed</p> --}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-12 col-12 mt-6">
+      <!-- card -->
+      <div class="card rounded-3">
+        <!-- card body -->
+        <div class="card-body">
+          <!-- heading -->
+          <div class="d-flex justify-content-between align-items-center
+            mb-3">
+            <div>
+              <h4 class="mb-0">Amount Spent</h4>
+            </div>
+            <div class="icon-shape icon-md bg-light-primary text-primary
+              rounded-1">
+              <i class="bi bi-currency-dollar fs-4"></i>
+            </div>
+          </div>
+          <!-- project number -->
+          <div>
+            <h1 class="fw-bold">26</h1>
+            <p class="mb-0"><span class="text-success me-2">5</span>Recent Payment</p>
+            <p class="mb-0"><span class="text-success me-2">15</span>All Previous Payment</p>
           </div>
         </div>
       </div>

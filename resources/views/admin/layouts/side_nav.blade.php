@@ -26,7 +26,7 @@
              <li class="nav-item">
                 <a class="nav-link has-arrow  collapsed " href="#!" data-bs-toggle="collapse" data-bs-target="#navPages" aria-expanded="false" aria-controls="navPages">
                     <i
-                    data-feather="layers"
+                    data-feather="users"
 
                     class="nav-icon icon-xs me-2">
                 </i> Clients
@@ -53,7 +53,7 @@
                         <!-- Nav item -->
                         <li class="nav-item">
                             <a class="nav-link has-arrow  collapsed " href="#!" data-bs-toggle="collapse" data-bs-target="#navAuthentication" aria-expanded="false" aria-controls="navAuthentication">
-                                <i data-feather="lock" class="nav-icon icon-xs me-2">
+                                <i data-feather="layers" class="nav-icon icon-xs me-2">
                                 </i> Projects
                             </a>
                             <div id="navAuthentication" class="collapse " data-bs-parent="#sideNavbar">
@@ -71,7 +71,7 @@
                         <!-- Nav item -->
                         <li class="nav-item">
                             <a class="nav-link has-arrow  collapsed " href="#!" data-bs-toggle="collapse" data-bs-target="#navAccountant" aria-expanded="false" aria-controls="navAuthentication">
-                                <i data-feather="lock" class="nav-icon icon-xs me-2">
+                                <i data-feather="user" class="nav-icon icon-xs me-2">
                                 </i> Accountant
                             </a>
                             <div id="navAccountant" class="collapse " data-bs-parent="#sideNavbar">
@@ -89,7 +89,7 @@
                         <!-- Nav item -->
                         <li class="nav-item">
                             <a class="nav-link has-arrow  collapsed " href="#!" data-bs-toggle="collapse" data-bs-target="#navSales" aria-expanded="false" aria-controls="navAuthentication">
-                                <i data-feather="lock" class="nav-icon icon-xs me-2">
+                                <i data-feather="dollar-sign" class="nav-icon icon-xs me-2">
                                 </i> Sales
                             </a>
                             <div id="navSales" class="collapse " data-bs-parent="#sideNavbar">

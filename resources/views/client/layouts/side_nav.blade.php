@@ -25,7 +25,7 @@
                         <!-- Nav item -->
                         <li class="nav-item">
                             <a class="nav-link has-arrow  collapsed " href="#!" data-bs-toggle="collapse" data-bs-target="#navAuthentication" aria-expanded="false" aria-controls="navAuthentication">
-                                <i data-feather="lock" class="nav-icon icon-xs me-2">
+                                <i data-feather="layers" class="nav-icon icon-xs me-2">
                                 </i> Projects
                             </a>
                             <div id="navAuthentication" class="collapse " data-bs-parent="#sideNavbar">
@@ -40,7 +40,7 @@
                         <!-- Nav item -->
                         <li class="nav-item">
                             <a class="nav-link has-arrow  collapsed " href="#!" data-bs-toggle="collapse" data-bs-target="#navSales" aria-expanded="false" aria-controls="navAuthentication">
-                                <i data-feather="lock" class="nav-icon icon-xs me-2">
+                                <i data-feather="dollar-sign" class="nav-icon icon-xs me-2">
                                 </i> Transactions
                             </a>
                             <div id="navSales" class="collapse " data-bs-parent="#sideNavbar">
