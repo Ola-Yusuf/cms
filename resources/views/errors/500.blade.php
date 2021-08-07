@@ -40,7 +40,7 @@
           <div class="text-center">
             <div class="mb-3">
               <!-- img -->
-              <img src="{{asset('assets/images/error/500-error-img.png')}}" alt=""
+              <img src="{{asset('assets/images/error/5 0 0.svg')}}" alt=""
                 class="img-fluid">
             </div>
             <!-- text -->
