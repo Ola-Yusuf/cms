@@ -57,7 +57,7 @@
                             <textarea id="requirements" name="requirements" class="form-control" placeholder="Project Requirement" rows="4"></textarea>
                           </div>
                           <div class="mb-3">
-                            <label class="form-label" for="textareaInput">Requirements File 
+                            <label class="form-label" for="textareaInput">Requirements/Supporting File 
                               <span class="text-secondary"> (.docx, .pdf, .xlxs, .jpg, .png  & .jpeg) Optional</span></label>
                             <input type="file" id="requirementsFile" name="requirementsFile" class="form-control">
                           </div>
