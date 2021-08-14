@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Models\Client;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use File;
 
 class ProjectFactory extends Factory
 {
@@ -24,6 +25,8 @@ class ProjectFactory extends Factory
      */
     public function definition()
     {
+        File::makeDirectory(storage_path('public/project files'), 0777, true, true);
+        
         return [
             'title' => $this->faker->sentence(6),
             'serial' => $this->faker->regexify('[A-Za-z0-9]{5}'),

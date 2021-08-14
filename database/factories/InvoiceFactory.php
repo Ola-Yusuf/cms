@@ -7,6 +7,7 @@ use App\Models\Client;
 use App\Models\Invoice;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use File;
 
 class InvoiceFactory extends Factory
 {
@@ -26,6 +27,8 @@ class InvoiceFactory extends Factory
      */
     public function definition()
     {
+        File::makeDirectory(storage_path('public/payment evidence files'), 0777, true, true);
+
         return [
             'projectId' => \App\Models\Project::inRandomOrder()->first()->id, 
             'issuedTo' => \App\Models\Client::inRandomOrder()->first()->id, 

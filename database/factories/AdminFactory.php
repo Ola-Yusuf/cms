@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use File;
 
 class AdminFactory extends Factory
 {
@@ -22,6 +23,7 @@ class AdminFactory extends Factory
      */
     public function definition()
     {
+        File::makeDirectory(public_path('profile image'), 0777, true, true);
         return [
             'name' => $this->faker->name,
             'avatar' => 'profile image/'. $this->faker->image(public_path('profile image'),400,300, 'people', false), 
