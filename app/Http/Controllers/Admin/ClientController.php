@@ -145,6 +145,6 @@ class ClientController extends Controller
         $message['content'] = 'Client Deleted Successfully';
         Session::flash('message',$message);
 
-        return redirect()->route('admin.view.client');
+        return redirect()->route('admin.view.clients');
     }
 }
