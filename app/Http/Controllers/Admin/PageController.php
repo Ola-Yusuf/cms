@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Session;
 class PageController extends Controller
 {
@@ -33,6 +34,25 @@ class PageController extends Controller
      */
     public function profile() {
         return view('admin.profile');
+    }
+
+     /**
+     * Show the Admin dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function editProfileForm() {
+        return view('admin.edit_profile');
+    }
+
+     /**
+     * Show the Admin dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function updateProfile(Request $request) {
+        dd($request);
+        return view('admin.edit_profile');
     }
 
     /**

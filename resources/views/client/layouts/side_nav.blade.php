@@ -31,7 +31,7 @@
                             <div id="navAuthentication" class="collapse " data-bs-parent="#sideNavbar">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link  " href="{{route('client.view.projects')}}"> View All Project</a>
+                                        <a class="nav-link  " href="{{route('client.view.all.project')}}"> View All Project</a>
                                     </li>
                                 </ul>
                             </div>

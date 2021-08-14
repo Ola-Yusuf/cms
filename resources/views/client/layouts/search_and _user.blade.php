@@ -16,7 +16,7 @@
         <a class="rounded-circle" href="#" role="button" id="dropdownUser"
           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <div class="avatar avatar-md avatar-indicators avatar-online">
-            <img alt="avatar" src="{{asset('assets/images/avatar/avatar-1.jpg')}}"
+            <img alt="avatar" src="{{Auth::guard('client')->user()->avatar ? asset(Auth::guard('client')->user()->avatar) : asset('assets/images/avatar/avatar-1.jpg')}}"
               class="rounded-circle" />
           </div>
         </a>
@@ -26,7 +26,7 @@
 
 
             <div class="lh-1 ">
-              <h5 class="mb-1"> {{ !Auth::guard('client')->guest() ? Auth::guard('client')->user()->fname : '' }}</h5>
+              <h5 class="mb-1"> {{ Auth::guard('client')->user()->username ? Auth::guard('client')->user()->username : Auth::guard('client')->user()->fname }}</h5>
               <a href="{{route('client.profile')}}" class="text-inherit fs-6">View my profile</a>
             </div>
             <div class=" dropdown-divider mt-3 mb-2"></div>
@@ -35,7 +35,7 @@
           <ul class="list-unstyled">
 
             <li>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="{{route('client.edit.profile')}}">
                 <i class="me-2 icon-xxs dropdown-item-icon" data-feather="user"></i>Edit
                 Profile
               </a>

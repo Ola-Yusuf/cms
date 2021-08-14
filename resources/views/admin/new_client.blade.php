@@ -20,19 +20,52 @@
                           <!-- Input -->
                           <div class="mb-3">
                             <label class="form-label" for="textInput">Full Name</label>
-                            <input type="text" id="fname" name="fname" class="form-control" placeholder="Full Name">
+                            <input type="text" id="fname" name="fname" class="form-control @error('fname') is-invalid @enderror" placeholder="Full Name">
+                            @error('fname')
+                              <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                              </span>
+                            @enderror
                           </div>
                           <div class="mb-3">
                             <label class="form-label" for="textInput">Username</label>
-                            <input type="text" id="username" name="username" class="form-control" placeholder="Username">
+                            <input type="text" id="username" name="username" class="form-control @error('username') is-invalid @enderror" placeholder="Username">
+                            @error('username')
+                              <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                              </span>
+                            @enderror
                           </div>
                           <div class="mb-3">
                             <label class="form-label" for="textInput">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" placeholder="name@example.com">
+                            <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="name@example.com">
+                            @error('email')
+                              <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                              </span>
+                            @enderror
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label" for="selectOne">Gender</label>
+                            <select id="gender" name="gender" class="form-select @error('gender') is-invalid @enderror">
+                              <option value="" {{old('gender') == '' ? 'selected' : ''}}>------</option>
+                              <option value="Male" {{old('gender') == 'Male' ? 'selected' : ''}}>Male</option>
+                              <option value="Female" {{old('gender') == 'Female' ? 'selected' : ''}}>Female</option>
+                            </select>
+                            @error('gender')
+                              <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                              </span>
+                            @enderror
                           </div>
                           <div class="mb-3">
                             <label class="form-label" for="textInput">Phone Number</label>
-                            <input type="tel" id="tel" name="tel" class="form-control" placeholder="235 0989373">
+                            <input type="tel" id="tel" name="tel" class="form-control @error('tel') is-invalid @enderror" placeholder="235 0989373">
+                            @error('tel')
+                              <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                              </span>
+                            @enderror
                           </div>
                         <div class="col-12" align="center">
                             <button class="btn btn-primary" type="submit">Submit form</button>

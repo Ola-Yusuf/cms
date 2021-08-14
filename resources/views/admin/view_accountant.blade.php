@@ -9,33 +9,39 @@
       <div class="card h-100">
         <!-- card header  -->
         <div class="card-header bg-white border-bottom-0 py-4">
-          <h4 class="mb-0"> All Accountants </h4>
+          <h4 class="mb-0"> All Accountant </h4>
         </div>
         <!-- table  -->
-        <div class="table-responsive">
-          <table class="table text-nowrap">
+        @if(count($accountants) > 0)
+        <div class="table-responsive" style="padding: 10px">
+          <table class="table text-nowrap" id="dataTable" name='dataTable'>
             <thead class="table-light">
               <tr>
-                <th>Name</th>
-                <th>Contact</th>
+                <th class="align-middle">S/N</th>
+                <th class="align-middle">Name</th>
+                <th class="align-middle">Gender</th>
+                <th class="align-middle">Contact</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
+              @foreach ($accountants as $key => $item)
               <tr>
+                <td class="align-middle">{{$key + 1}}</td>
                 <td class="align-middle">
                   <div class="d-flex align-items-center">
                     <div>
-                      <img src="{{asset('assets/images/avatar/avatar-2.jpg')}}"
+                      <img src="{{asset($item->avatar)}}"
                         alt="" class="avatar-md avatar rounded-circle">
                     </div>
                     <div class="ms-3 lh-1">
-                      <h5 class="fw-bold mb-1">Anita Parmar</h5>
-                      <p class="mb-0">anita@example.com</p>
+                      <h5 class="fw-bold mb-1">{{$item->fname}}</h5>
+                      <p class="mb-0">{{$item->email}}</p>
                     </div>
                   </div>
                 </td>
-                <td class="align-middle">234 676 8979</td>
+                <td class="align-middle">{{$item->gender}}</td>
+                <td class="align-middle">{{$item->tel}}</td>
                 <td class="align-middle">
                   <div class="dropdown dropstart">
                     <a class="text-muted text-primary-hover" href="#"
@@ -46,143 +52,34 @@
                     </a>
                     <div class="dropdown-menu"
                       aria-labelledby="dropdownTeamOne">
-                      <a class="dropdown-item" href="#">Show Details</a>
-                      <a class="dropdown-item" href="#">Edit Details</a>
-                      <a class="dropdown-item" href="#">Delete</a>
+                      <a class="dropdown-item" href="{{route('admin.show.accountant',Crypt::encrypt($item->id))}}">Show Details</a>
+                      <a class="dropdown-item" href="{{route('admin.edit.accountant',Crypt::encrypt($item->id))}}">Edit Details</a>
+                      <a class="dropdown-item" href="{{route('admin.delete.accountant',Crypt::encrypt($item->id))}}"
+                          onclick=" return confirm('\n\nAre you sure you want to delete Accountant data? \n\nClick OK to proceed.');">
+                          <strong style="color: red"> Delete </strong>
+                      </a>
                     </div>
                   </div>
                 </td>
               </tr>
-              <tr>
-                <td class="align-middle">
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <img src="{{asset('assets/images/avatar/avatar-2.jpg')}}"
-                        alt="" class="avatar-md avatar rounded-circle">
-                    </div>
-                    <div class="ms-3 lh-1">
-                      <h5 class="fw-bold mb-1">Anita Parmar</h5>
-                      <p class="mb-0">anita@example.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="align-middle">234 676 8979</td>
-                <td class="align-middle">
-                  <div class="dropdown dropstart">
-                    <a class="text-muted text-primary-hover" href="#"
-                      role="button" id="dropdownTeamOne"
-                      data-bs-toggle="dropdown" aria-haspopup="true"
-                      aria-expanded="false">
-                      <i class="icon-xxs" data-feather="more-vertical"></i>
-                    </a>
-                    <div class="dropdown-menu"
-                      aria-labelledby="dropdownTeamOne">
-                      <a class="dropdown-item" href="#">Show Details</a>
-                      <a class="dropdown-item" href="#">Edit Details</a>
-                      <a class="dropdown-item" href="#">Delete</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="align-middle">
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <img src="{{asset('assets/images/avatar/avatar-2.jpg')}}"
-                        alt="" class="avatar-md avatar rounded-circle">
-                    </div>
-                    <div class="ms-3 lh-1">
-                      <h5 class="fw-bold mb-1">Anita Parmar</h5>
-                      <p class="mb-0">anita@example.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="align-middle">234 676 8979</td>
-                <td class="align-middle">
-                  <div class="dropdown dropstart">
-                    <a class="text-muted text-primary-hover" href="#"
-                      role="button" id="dropdownTeamOne"
-                      data-bs-toggle="dropdown" aria-haspopup="true"
-                      aria-expanded="false">
-                      <i class="icon-xxs" data-feather="more-vertical"></i>
-                    </a>
-                    <div class="dropdown-menu"
-                      aria-labelledby="dropdownTeamOne">
-                      <a class="dropdown-item" href="#">Show Details</a>
-                      <a class="dropdown-item" href="#">Edit Details</a>
-                      <a class="dropdown-item" href="#">Delete</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="align-middle">
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <img src="{{asset('assets/images/avatar/avatar-2.jpg')}}"
-                        alt="" class="avatar-md avatar rounded-circle">
-                    </div>
-                    <div class="ms-3 lh-1">
-                      <h5 class="fw-bold mb-1">Anita Parmar</h5>
-                      <p class="mb-0">anita@example.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="align-middle">234 676 8979</td>
-                <td class="align-middle">
-                  <div class="dropdown dropstart">
-                    <a class="text-muted text-primary-hover" href="#"
-                      role="button" id="dropdownTeamOne"
-                      data-bs-toggle="dropdown" aria-haspopup="true"
-                      aria-expanded="false">
-                      <i class="icon-xxs" data-feather="more-vertical"></i>
-                    </a>
-                    <div class="dropdown-menu"
-                      aria-labelledby="dropdownTeamOne">
-                      <a class="dropdown-item" href="#">Show Details</a>
-                      <a class="dropdown-item" href="#">Edit Details</a>
-                      <a class="dropdown-item" href="#">Delete</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="align-middle">
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <img src="{{asset('assets/images/avatar/avatar-2.jpg')}}"
-                        alt="" class="avatar-md avatar rounded-circle">
-                    </div>
-                    <div class="ms-3 lh-1">
-                      <h5 class="fw-bold mb-1">Anita Parmar</h5>
-                      <p class="mb-0">anita@example.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="align-middle">234 676 8979</td>
-                <td class="align-middle">
-                  <div class="dropdown dropstart">
-                    <a class="text-muted text-primary-hover" href="#"
-                      role="button" id="dropdownTeamOne"
-                      data-bs-toggle="dropdown" aria-haspopup="true"
-                      aria-expanded="false">
-                      <i class="icon-xxs" data-feather="more-vertical"></i>
-                    </a>
-                    <div class="dropdown-menu"
-                      aria-labelledby="dropdownTeamOne">
-                      <a class="dropdown-item" href="#">Show Details</a>
-                      <a class="dropdown-item" href="#">Edit Details</a>
-                      <a class="dropdown-item" href="#">Delete</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
+        @else
+          <p> <strong> No Accountant To Show At The Moment </strong> </p>
+        @endif
       </div>
     </div>
   </div>
 </div>
 </div>
- @endsection     
+@endsection   
+
+ @section('bottom_script')
+ <script>
+  $(document).ready(function() {
+    $('#dataTable').DataTable();
+    });
+  </script>
+ @endsection

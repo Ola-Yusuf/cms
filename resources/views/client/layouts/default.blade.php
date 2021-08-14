@@ -26,6 +26,7 @@
 
 <!-- Theme CSS -->
 <link rel="stylesheet" href="{{asset('assets/css/theme.min.css')}}">
+<link rel="stylesheet" href="{{asset('assets/css/dataTables.bootstrap5.min.css')}}">
 
   @yield('top_style')
 
@@ -68,6 +69,9 @@
 
 <!-- Theme JS -->
 <script src="{{asset('assets/js/theme.min.js')}}"></script>
+
+<script src="{{asset('assets/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('assets/js/dataTables.bootstrap5.min.js')}}"></script>
 
   @yield('bottom_script')
 

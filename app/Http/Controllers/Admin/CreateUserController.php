@@ -11,7 +11,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class AccountController extends Controller
+class CreateUserController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -35,6 +35,7 @@ class AccountController extends Controller
         return Validator::make($data, [
             'fname' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255'],
+            'gender' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:accountants'],
             'tel' => ['required', 'string', 'unique:accountants'],
             // 'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -53,6 +54,7 @@ class AccountController extends Controller
         return Accountant::create([
             'fname' => $data['fname'],
             'username' => $data['username'],
+            'gender' => $data['gender'],
             'email' => $data['email'],
             'tel' => $data['tel'],
             'password' => Hash::make('CMS-Accountant'),
@@ -68,7 +70,7 @@ class AccountController extends Controller
 
         Session::flash('status','Accountant Created Successfully.'); 
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.view.accountants');
     }
 
      /**
@@ -83,6 +85,7 @@ class AccountController extends Controller
         return Validator::make($data, [
             'fname' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255'],
+            'gender' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:clients'],
             'tel' => ['required', 'string', 'unique:clients'],
             // 'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -101,6 +104,7 @@ class AccountController extends Controller
         return Client::create([
             'fname' => $data['fname'],
             'username' => $data['username'],
+            'gender' => $data['gender'],
             'email' => $data['email'],
             'tel' => $data['tel'],
             'password' => Hash::make('CMS-Client'),
@@ -116,7 +120,7 @@ class AccountController extends Controller
 
         Session::flash('status','Client Created Successfully.'); 
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.view.clients');
     }
 
 }

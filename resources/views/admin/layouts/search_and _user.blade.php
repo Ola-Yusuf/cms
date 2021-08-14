@@ -16,7 +16,7 @@
         <a class="rounded-circle" href="#" role="button" id="dropdownUser"
           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <div class="avatar avatar-md avatar-indicators avatar-online">
-            <img alt="avatar" src="{{asset('assets/images/avatar/avatar-1.jpg')}}"
+            <img alt="avatar" src="{{Auth::guard('admin')->user()->avatar != null ? asset(Auth::guard('admin')->user()->avatar) : asset('defaultAvatar.png')}}"
               class="rounded-circle" />
           </div>
         </a>
@@ -35,7 +35,7 @@
           <ul class="list-unstyled">
 
             <li>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="{{route('admin.edit.profile')}}">
                 <i class="me-2 icon-xxs dropdown-item-icon" data-feather="user"></i>Edit
                 Profile
               </a>

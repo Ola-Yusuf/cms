@@ -62,7 +62,7 @@
                                         <a class="nav-link " href="{{route('admin.new.project')}}"> Add New Project</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link  " href="{{route('admin.view.projects')}}"> View All Project</a>
+                                        <a class="nav-link  " href="{{route('admin.view.all.project')}}"> View All Project</a>
                                     </li>
                                 </ul>
                             </div>
