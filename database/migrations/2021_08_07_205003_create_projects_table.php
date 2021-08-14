@@ -16,16 +16,17 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('serial');
             $table->text('description');
             $table->text('requirement');
-            $table->string('projectFile');
+            $table->string('projectFile')->nullable();
             $table->foreignId('ownBy')->nullable();
             $table->integer('percentageComplete')->unsigned()->default(0)->max(100);
-            $table->date('startDate');
+            $table->date('startDate')->nullable();
             $table->date('completeDate')->nullable();
             $table->date('deliveryDate')->nullable();
             $table->boolean('isDelivered')->boolean()->default(0);
-            $table->text('feedback');
+            $table->text('feedback')->nullable();
             $table->timestamps();
             $table->foreign('ownBy')->references('id')->on('clients')->onDelete('cascade');
         });

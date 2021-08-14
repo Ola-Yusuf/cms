@@ -17,8 +17,10 @@ class CreateAccountantsTable extends Migration
             $table->id();
             $table->string('fname');
             $table->string('username');
+            $table->string('gender');
             $table->string('email')->unique();
             $table->string('tel')->unique();
+            $table->string('avatar')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

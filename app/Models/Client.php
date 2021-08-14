@@ -21,6 +21,15 @@ class Client extends Authenticatable
         'fname','username', 'email', 'tel', 'address','gender', 'avatar', 'password',
     ];
 
+
+    /**
+     * Get the projects for the blog post.
+     */
+    public function projects()
+    {
+        return $this->hasMany(Project::class, 'ownBy');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
