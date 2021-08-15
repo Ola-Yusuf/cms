@@ -130,7 +130,7 @@ class ClientController extends Controller
     public function destroy($id)
     {
         $client = Client::with('projects')->find(Crypt::decrypt($id));
-        // dd($client);
+
         if(Storage::disk('publicPath')->exists($client->avatar))
             Storage::delete($client->avatar);
 

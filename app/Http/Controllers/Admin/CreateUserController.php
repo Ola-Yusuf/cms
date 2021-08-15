@@ -70,6 +70,10 @@ class CreateUserController extends Controller
 
         Session::flash('status','Accountant Created Successfully.'); 
 
+        $message['type'] = 'success';
+        $message['content'] = 'Accountant Created Successfully';
+        Session::flash('message',$message);
+
         return redirect()->route('admin.view.accountants');
     }
 
@@ -118,7 +122,9 @@ class CreateUserController extends Controller
 
         event(new Registered($user = $this->createClient($request->all())));
 
-        Session::flash('status','Client Created Successfully.'); 
+        $message['type'] = 'success';
+        $message['content'] = 'Client Created Successfully';
+        Session::flash('message',$message);
 
         return redirect()->route('admin.view.clients');
     }
