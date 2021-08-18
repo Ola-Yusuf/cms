@@ -131,7 +131,7 @@
                   </div>
                   <div class="col-6 mb-5">
                     <h6 class="text-uppercase fs-5 ls-2">Delivery Date </h6>
-                    <p class="mb-0" style="color:{{$project->isDelivered && $project->deliveryDate ? 'green' : 'brown' }}">{{$project->isDelivered  && $project->deliveryDate ? $project->deliveryDate->format('D, jS M Y') : 'Not Available'}}</p>
+                    <p class="mb-0" style="color:{{$project->isDelivered && $project->deliveryDate ? 'green' : 'brown' }}"><strong> {{$project->isDelivered  && $project->deliveryDate ? $project->deliveryDate->format('D, jS M Y') : 'Not Available'}}</strong></p>
                   </div>
                   <div class="col-12 mb-5">
                     <h6 class="text-uppercase fs-5 ls-2">Feedback

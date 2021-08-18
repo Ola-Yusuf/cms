@@ -136,8 +136,8 @@
                   </div>
                   <div class="col-12 mb-5">
                     <label class="form-label" for="textInput">Delivery Date <span class="text-secondary">(optional)</span></label>
-                    <input type="date" id="deliveredDate" name="deliveredDate" value="{{ old('deliveredDate') ? old('deliveredDate') : ($project->deliveredDate ? $project->deliveredDate->format('Y-m-d') : '') }}"  class="form-control @error('deliveredDate') is-invalid @enderror" placeholder="05/04/2001">
-                    @error('deliveredDate')
+                    <input type="date" id="deliveryDate" name="deliveryDate" value="{{ old('deliveryDate') ? old('deliveryDate') : ($project->deliveryDate ? $project->deliveryDate->format('Y-m-d') : '') }}"  class="form-control @error('deliveryDate') is-invalid @enderror" placeholder="05/04/2001">
+                    @error('deliveryDate')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                       </span>

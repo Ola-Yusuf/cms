@@ -107,7 +107,6 @@ class ProjectController extends Controller
     public function update(ProjectRequest $request, $id)
     {
         $data = $request->all();
-
         if($request->hasFile('projectFile')){
             $fileName = $request->file('projectFile')->store('project files', 'public');
             $data['projectFile'] = $fileName;

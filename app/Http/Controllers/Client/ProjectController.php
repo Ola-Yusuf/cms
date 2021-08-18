@@ -73,7 +73,7 @@ class ProjectController extends Controller
         Project::find(Crypt::decrypt($id))->update($data);
         
         $message['type'] = 'success';
-        $message['content'] = 'Project Update Successful';
+        $message['content'] = 'Project Feedback Update Successful';
         Session::flash('message',$message);
 
         return redirect()->route('client.show.project',$id);

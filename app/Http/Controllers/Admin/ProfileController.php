@@ -48,6 +48,8 @@ class ProfileController extends Controller
 
         $this->validator($request->all())->validate();
 
+        $data = $request->all();
+
         if($request->hasFile('avatar')){
             $fileName = $request->file('avatar')->store('profile image', ['disk' => 'publicPath']);
             $data['avatar'] = $fileName;

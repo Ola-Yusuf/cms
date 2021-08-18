@@ -95,8 +95,12 @@
       </li>
     </ul>
   </nav>
-  @if (session('status'))
-    <div class="alert alert-success" role="alert">
-        {{ session('status') }}
+@if(session()->has('message'))
+  <div class="alert alert-{{session()->get('message')['type']}} alert-dismissible fade show" role="alert">
+    <strong>{{strtoupper(session()->get('message')['type'])}}</strong> 
+    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 
+    {{session()->get('message')['content']}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    </button>
     </div>
-  @endif
+@endif
