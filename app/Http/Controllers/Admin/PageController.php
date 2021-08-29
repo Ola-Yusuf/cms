@@ -82,24 +82,6 @@ class PageController extends Controller
         return view('admin.new_project');
     }
 
-    /**
-     * Show the Admin dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function viewClient() {
-        return view('admin.view_client');
-    }
-
-    /**
-     * Show the Admin dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function viewProject() {
-        return view('admin.view_project');
-    }
-
     
     /**
      * Show the Admin dashboard.
@@ -108,15 +90,6 @@ class PageController extends Controller
      */
     public function viewAccountant() {
         return view('admin.view_accountant');
-    }
-
-     /**
-     * Show the Admin dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function viewInvoice() {
-        return view('admin.view_invoice');
     }
 
     /**

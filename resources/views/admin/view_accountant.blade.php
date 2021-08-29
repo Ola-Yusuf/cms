@@ -31,7 +31,7 @@
                 <td class="align-middle">
                   <div class="d-flex align-items-center">
                     <div>
-                      <img src="{{asset($item->avatar)}}"
+                      <img src="{{$item->avatar ? asset($item->avatar) : asset('defaultAvatar.png')}}"
                         alt="" class="avatar-md avatar rounded-circle">
                     </div>
                     <div class="ms-3 lh-1">

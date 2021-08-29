@@ -9,6 +9,7 @@ Route::get('/profile/edit', 'ProfileController@editProfileForm')->name('edit.pro
 Route::post('/profile', 'ProfileController@updateProfile')->name('update.profile');
 Route::get('/client', 'PageController@newClient')->name('new.client');
 Route::get('/accountant', 'PageController@newAccountant')->name('new.accountant');
+// Route::get('/accountant', 'PageController@newAccountant')->name('new.accountant');
 
 Route::prefix('/project')->group(function () {
   Route::get('/new', 'ProjectController@create')->name('new.project');
@@ -36,8 +37,19 @@ Route::prefix('/accountant')->group(function () {
   Route::get('/delete/{id}', 'AccountantController@destroy')->name('delete.accountant');
 });
 
+Route::prefix('/invoice')->group(function () {
+  Route::get('/view', 'InvoiceController@index')->name('view.invoices');
+  Route::get('/new', 'InvoiceController@create')->name('new.invoice');
+  Route::post('/store', 'InvoiceController@store')->name('store.invoice');
+  Route::get('/detail/{id}', 'InvoiceController@show')->name('show.invoice');
+  Route::get('/edit/{id}', 'InvoiceController@edit')->name('edit.invoice');
+  Route::post('/update/{id}', 'InvoiceController@update')->name('update.invoice');
+  Route::get('/delete/{id}', 'InvoiceController@destroy')->name('delete.invoice');
+  Route::get('/download/{id}', 'InvoiceController@download')->name('download.invoice');
+});
+
 // Route::get('/accountant/view', 'PageController@viewAccountant')->name('view.accountants');
-Route::get('/invoice/view', 'PageController@viewInvoice')->name('view.invoices');
+// Route::get('/invoice/view', 'PageController@viewInvoice')->name('view.invoices');
 Route::get('/payment/view', 'PageController@viewPayment')->name('view.payments');
 
 // Login

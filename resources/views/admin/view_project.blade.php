@@ -69,7 +69,7 @@
                           aria-labelledby="dropdownTeamOne">
                           <a class="dropdown-item" href="{{route('admin.show.project', Crypt::encrypt($item->id))}}">Show Details</a>
                           <a class="dropdown-item" href="{{route('admin.edit.project', Crypt::encrypt($item->id))}}">Edit Details</a>
-                          <a class="dropdown-item" href="{{route('admin.delete.project', Crypt::encrypt($item->id))}}">Delete</a>
+                          <a class="dropdown-item" style="color: red;" href="{{route('admin.delete.project', Crypt::encrypt($item->id))}}">Delete</a>
                         </div>
                       </div>
                     </td>
