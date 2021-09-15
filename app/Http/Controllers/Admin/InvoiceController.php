@@ -12,6 +12,9 @@ use Session;
 use Auth;
 use Crypt;
 use Storage;
+use Carbon\Carbon;
+use PDF;
+use DB;
 
 class InvoiceController extends Controller
 {
@@ -32,7 +35,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $invoices = Invoice::with('project')->with('client')->get();
+        $invoices = Invoice::with('project')->with('client')->orderBy('created_at', 'DESC')->get();
         return view('admin.view_invoice',compact('invoices'));
     }
 
@@ -89,9 +92,9 @@ class InvoiceController extends Controller
      */
     public function edit($id)
     {
-        // $project = Project::find(Crypt::decrypt($id));
-        // $clients = Client::select('id','fname','username','avatar')->get();
-        // return view('admin.edit_project', compact('project', 'clients'));
+        $invoice = Invoice::with('project')->with('client')->find(Crypt::decrypt($id));
+        $projects = Project::with('client')->get();
+        return view('admin.edit_invoice', compact('invoice','projects'));
     }
 
     /**
@@ -101,21 +104,43 @@ class InvoiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProjectRequest $request, $id)
+    public function update(InvoiceRequest $request, $id)
     {
         $data = $request->all();
-        if($request->hasFile('projectFile')){
-            $fileName = $request->file('projectFile')->store('project files', 'public');
-            $data['projectFile'] = $fileName;
-        }
+        $data['issuedTo'] = Project::find($data['projectId'])->ownBy;
+        $data['user_id'] = Auth::guard('admin')->user()->id;
+        $data['user_type'] = 'App\Models\Admin';
 
-        Project::find(Crypt::decrypt($id))->update($data);
+        Invoice::find(Crypt::decrypt($id))->update($data);
         
         $message['type'] = 'success';
-        $message['content'] = 'Project Update Successful';
+        $message['content'] = 'Invoice Update Successful';
         Session::flash('message',$message);
 
-        return redirect()->route('admin.show.project',$id);
+        return redirect()->route('admin.show.invoice',$id);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function confirmPayment($id)
+    {
+        $data['paymentDate'] = Carbon::now();
+        $data['isPayEvidenceApproved'] = 1;
+        $data['confirmed_user_id'] = Auth::guard('admin')->user()->id;
+        $data['confirmed_user_type'] = 'App\Models\Admin';
+
+        Invoice::find(Crypt::decrypt($id))->update($data);
+        
+        $message['type'] = 'success';
+        $message['content'] = 'Payment Confirmed & Receipt Generated Successfully';
+        Session::flash('message',$message);
+
+        return redirect()->route('admin.show.invoice',$id);
     }
 
     /**
@@ -128,7 +153,7 @@ class InvoiceController extends Controller
     {
         $invoice = Invoice::find(Crypt::decrypt($id));
         
-        Storage::delete($invoice->paymentEvidence);
+        Storage::disk('publicDisk')->delete($invoice->paymentEvidence);
         
         $invoice->delete();
 
@@ -139,31 +164,33 @@ class InvoiceController extends Controller
         return redirect()->route('admin.view.invoices');
     }
 
-    public function download($id) {
-        
+    public function showPaymentEvidence($id) {
+        $invoice = Invoice::find(Crypt::decrypt($id));
+        $headers = array(
+            'Content-Type: '.Storage::disk('publicDisk')->mimeType($invoice->paymentEvidence),
+        );
+        $exe = explode('.', $invoice->paymentEvidence)[1];
+        return Storage::disk('publicDisk')->download($invoice->paymentEvidence, 
+                                'payment Evidence For Invoice'.$invoice->id.'.'.$exe, 
+                                $headers);
     }
 
-    public function generateRandomString($length = 10, $letters = true) {
-        if(!$letters)
-            $characters = '0123456789';
-        if($letters)
-            $characters = 'abcdefghijklmnopqrstuvwxyz';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
+    public function downloadInvoiceAsPDF($id){
+        $invoice = Invoice::with('project')->with('client')->find(Crypt::decrypt($id));
+        $pdf = PDF::loadView('download.invoice', compact('invoice'));
+        return $pdf->download($invoice->invoiceSerial .'.pdf');
+        // return view('download.invoice', compact('invoice'));
     }
 
     public function generateSerial(){
-        $digits = $this->generateRandomString(3,false);
-        $letters = $this->generateRandomString(2,true);
-        $serial = 'INV'.$digits.$letters;
-        if(Invoice::where('invoiceSerial', $serial)->exists())
-            $this->generateSerial();
+        $statement = DB::select("SHOW TABLE STATUS LIKE 'invoices'");
+        $nextId = $statement[0]->Auto_increment;
+        $digitLength = $nextId == 999 ? 4 : 3;
+        $nextId . '' ;
+        while (strlen($nextId) < $digitLength) {
+            $nextId = 0 . $nextId;
+        }
+        $serial = 'INV'.$nextId;
         return $serial;
     }
-
-
 }

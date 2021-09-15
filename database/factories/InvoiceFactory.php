@@ -44,7 +44,7 @@ class InvoiceFactory extends Factory
             'amountToPay' => $this->faker->biasedNumberBetween(100, 1000), 
             'dueDate' => $this->faker->date(), 
             'invoiceSerial' => $this->faker->bothify('INV###??'), 
-            'paymentEvidence' => \Illuminate\Http\UploadedFile::fake()->create('evidence.pdf')->store('public/payment evidence files'), 
+            'paymentEvidence' => \Illuminate\Http\UploadedFile::fake()->create('evidence.pdf')->store('payment evidence files','publicDisk'), 
             'paymentDate' => $this->faker->date, 
             'isPayEvidenceApproved' => $this->faker->randomElement([0, 1]),
         ];

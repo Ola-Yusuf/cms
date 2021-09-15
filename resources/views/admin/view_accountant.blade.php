@@ -58,6 +58,10 @@
                           onclick=" return confirm('\n\nAre you sure you want to delete Accountant data? \n\nClick OK to proceed.');">
                           <strong style="color: red"> Delete </strong>
                       </a>
+                      <a class="dropdown-item" href="{{route('admin.reset.accountant.password',Crypt::encrypt($item->id))}}"
+                        onclick=" return confirm('Note: \n\nThis Accountant Password Will be Changed to CMS-Accountant. \n\nClick OK to proceed.');"
+                      ><strong style="color:brown"> Reset Password </strong>
+                    </a>
                     </div>
                   </div>
                 </td>

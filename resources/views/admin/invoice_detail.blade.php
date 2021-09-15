@@ -32,16 +32,23 @@
               <a class="text-muted text-primary-hover" href="#"
                 role="button" id="dropdownTeamOne"
                 data-bs-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                <i class="icon-xxs" data-feather="more-vertical"></i>
+                aria-expanded="false"> 
+                  <i class="icon-l" data-feather="more-vertical"></i>
               </a>
               <div class="dropdown-menu"
                 aria-labelledby="dropdownTeamOne">
                 <a class="dropdown-item" href="{{route('admin.download.invoice',Crypt::encrypt($invoice->id))}}">Download</a>
                 @if(!($invoice->isPayEvidenceApproved && $invoice->paymentEvidence))
-                <a class="dropdown-item" href="{{route('admin.edit.invoice',Crypt::encrypt($invoice->id))}}">
-                  {{!$invoice->isPayEvidenceApproved && $invoice->paymentEvidence ? 'Confirm Payment':'Edit Details'}}</a>
-                @endif
+                  @if(!$invoice->isPayEvidenceApproved && $invoice->paymentEvidence )
+                    <a class="dropdown-item" href="{{route('admin.confirm.payment.invoice',Crypt::encrypt($invoice->id))}}">
+                      Confirm Payment
+                    </a>
+                  @else
+                    <a class="dropdown-item" href="{{route('admin.edit.invoice',Crypt::encrypt($invoice->id))}}">
+                      Edit Details
+                    </a>
+                  @endif
+                @endif 
                   <a class="dropdown-item" href="{{route('admin.delete.invoice',Crypt::encrypt($invoice->id))}}" style="color:red;">Delete</a>
               </div>
             </div>
@@ -123,7 +130,8 @@
                     <h6 class="text-uppercase fs-5 ls-2">Payment Evidence File
                     </h6>
                     @if($invoice->paymentEvidence)
-                      <p class="mb-0"> <a class="button" href="#">View Evidence Of Payment</a></p>
+                      <p class="mb-0"> <a class="button" href="{{route('admin.show.payment.evidence',Crypt::encrypt($invoice->id))}}">
+                        View Evidence Of Payment</a></p>
                     @else
                       <p class="mb-0" style="color: red;"> Client Yet To Pay</p>
                     @endif

@@ -27,10 +27,9 @@ class InvoiceRequest extends FormRequest
     {
         return [
             'projectId' => 'required|numeric|exists:projects,id', 
-            'invoiceSerial' => 'required|string|unique:invoices', 
+            // 'invoiceSerial' => 'required|string|unique:invoices', 
             'dueDate' => 'required|date', 
             'amountToPay' => 'required|numeric', 
-            
         ];
     }
 }

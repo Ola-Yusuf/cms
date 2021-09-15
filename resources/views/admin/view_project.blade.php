@@ -41,7 +41,7 @@
                   <td class="align-middle">
                     <span class="avatar avatar-sm">
                       <img alt="avatar"
-                        src="{{asset($item->client->avatar)}}"
+                        src="{{$item->client->avatar ? asset($item->client->avatar) : asset('defaultAvatar.png')}}"
                         class="rounded-circle">
                     </span>
                     {{$item->client->username ? $item->client->username : $item->client->fname}}</td>

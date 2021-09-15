@@ -60,7 +60,17 @@
                           aria-labelledby="dropdownTeamOne">
                           <a class="dropdown-item" href="{{route('admin.download.invoice',Crypt::encrypt($item->id))}}">Download</a>
                           <a class="dropdown-item" href="{{route('admin.show.invoice',Crypt::encrypt($item->id))}}">Show Details</a>
-                          <a class="dropdown-item" href="{{route('admin.edit.invoice',Crypt::encrypt($item->id))}}">Edit Details</a>
+                          @if(!($item->isPayEvidenceApproved && $item->paymentEvidence))
+                            @if(!$item->isPayEvidenceApproved && $item->paymentEvidence )
+                              <a class="dropdown-item" href="{{route('admin.confirm.payment.invoice',Crypt::encrypt($item->id))}}">
+                                Confirm Payment
+                              </a>
+                            @else
+                              <a class="dropdown-item" href="{{route('admin.edit.invoice',Crypt::encrypt($item->id))}}">
+                                Edit Details
+                              </a>
+                            @endif
+                          @endif 
                           <a class="dropdown-item" href="{{route('admin.delete.invoice',Crypt::encrypt($item->id))}}" style="color:red;">Delete</a>
                         </div>
                       </div>

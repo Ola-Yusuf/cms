@@ -29,7 +29,7 @@ class Project extends Model
 
     public function invoices()
     {
-        return $this->hasOne(Invoice::class, 'projectId');
+        return $this->hasMany(Invoice::class, 'projectId');
     }
 
 }
