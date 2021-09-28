@@ -5,6 +5,8 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Crypt;
 use Auth;
+use App\Rules\Alpha_spaces;
+use App\Rules\Email;
 
 class ClientRequest extends FormRequest
 {
@@ -27,11 +29,11 @@ class ClientRequest extends FormRequest
     {
 
         return [
-            'fname' => 'required|string|max:255|alpha_spaces',
-            'username' => 'sometimes|string|max:255|alpha_dash|unique:clients,id,'.Crypt::decrypt($this->clientId),
-            'email' => 'required|string|email|regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/|max:255|unique:clients,id,'.Crypt::decrypt($this->clientId),
-            'tel' => 'sometimes|numeric|max:16|unique:clients,id,'.Crypt::decrypt($this->clientId),
-            'address' => 'sometimes|string',
+            'fname' => ['required', 'string', 'max:255', new Alpha_spaces()],
+            'username' => 'sometimes|nullable|string|max:255|alpha_dash|unique:clients,id,'.Crypt::decrypt($this->clientId),
+            'email' => ['required', 'string', 'email',new Email(),'max:255', 'unique:clients,id,'.Crypt::decrypt($this->clientId)],
+            'tel' => 'required|numeric|max:9999999999999999|unique:clients,id,'.Crypt::decrypt($this->clientId),
+            'address' => 'sometimes|nullable',
             'gender' => 'required|string',
             'avatar' => 'sometimes|mimes:jpeg,jpg,png,gif',
         ];

@@ -29,7 +29,7 @@
                           </div>
                           <div class="mb-3">
                             <label class="form-label" for="selectOne">Project (Client)</label>
-                            <select id="projectId" name="projectId" class="form-select @error('projectId') is-invalid @enderror">
+                            <select id="projectId" name="projectId" class="form-select @error('projectId') is-invalid @enderror" required>
                               <option value="" {{old('projectId') == '' ? 'selected' : ''}}>------</option>
                               @foreach ($projects as $item)
                                 <option value="{{$item->id}}" {{old('projectId') == $item->id ? 'selected' : ''}}>

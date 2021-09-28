@@ -26,7 +26,7 @@
               <h6 class="text-uppercase fs-5 ls-2">Full Name </h6>
               <div class="d-flex align-items-center">
                 <div>
-                  <img src="{{asset($accountant->avatar)}}"
+                  <img src="{{asset($accountant->avatar) ? asset($accountant->avatar) : asset('defaultAvatar.png')}}"
                     alt="" class="avatar-md avatar rounded-circle">
                 </div>
                 <div class="ms-3 lh-1">

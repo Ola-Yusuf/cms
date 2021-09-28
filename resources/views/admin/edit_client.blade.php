@@ -104,8 +104,7 @@
                   </div>
                   <div class="col-12 mb-5">
                     <label class="form-label" for="textareaInput">Address</label>
-                    <textarea align="justify" id="address" name="address" class="form-control @error('address') is-invalid @enderror" placeholder="Describe Goal of the Project ..." rows="3">{{ old('address') ? old('address') : $client->address }}
-                    </textarea>
+                    <textarea align="justify" id="address" name="address" class="form-control @error('address') is-invalid @enderror" placeholder="Describe Goal of the Project ..." rows="3">{{ old('address') ? old('address') : $client->address }}</textarea>
                     @error('address')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
